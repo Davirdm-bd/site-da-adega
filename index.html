@@ -102,20 +102,19 @@
             <p>&copy; <span id="current-year"></span> Adega Conceito. Todos os direitos reservados.</p>
             <p class="mt-2">Desenvolvido por</p>
             <div class="flex items-center justify-center flex-wrap mt-1">
-                <a href="https://www.instagram.com/davirdm_" target="_blank" rel="noopener noreferrer" class="text-white hover:text-pink-500 transition-colors duration-300 flex items-center mx-2 my-1" aria-label="Instagram de davirdm_">
+                <a href="https://www.instagram.com/aadegaconceito_" target="_blank" rel="noopener noreferrer" class="text-white hover:text-pink-500 transition-colors duration-300 flex items-center mx-2 my-1" aria-label="Instagram de aadegaconceito_">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    aadegaconceito_
+                </a>
+                 <a href="https://www.instagram.com/davirdm_" target="_blank" rel="noopener noreferrer" class="text-white hover:text-pink-500 transition-colors duration-300 flex items-center mx-2 my-1" aria-label="Instagram de davirdm_">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     davirdm_
                 </a>
-                <a href="https://www.facebook.com/share/1AhpwYFP5T/?mibextid=qi2Omg" target="_blank" rel="noopener noreferrer" class="text-white hover:text-blue-600 transition-colors duration-300 flex items-center mx-2 my-1" aria-label="Facebook de Davi Rebouças">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="inline-block mr-1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                    Davi Rebouças
-                </a>
             </div>
-            <!-- userId não será exibido em HTML simples sem Firebase Auth -->
         </div>
     </footer>
 
-    <!-- Modals -->
+    <!-- Modal do Carrinho -->
     <div id="cart-modal-overlay" class="modal-overlay hidden">
         <div class="modal-content">
             <div class="flex justify-between items-center mb-6">
@@ -123,16 +122,12 @@
                 <button type="button" onclick="toggleCartModal()" class="modal-close-button">&times;</button>
             </div>
             <div id="cart-items-container" class="modal-body-scroll">
-                <!-- Itens do carrinho serão inseridos aqui -->
+                <!-- Itens do carrinho -->
             </div>
             <div id="cart-summary" class="mt-auto border-t pt-6 hidden">
                 <div class="text-right mb-1">
                     <span class="text-gray-600">Subtotal: </span>
                     <span class="font-semibold text-gray-800" id="cart-subtotal">R$ 0.00</span>
-                </div>
-                <div class="text-right mb-1 text-sm text-red-600 hidden" id="cart-discount-row">
-                    <span>Descontos (<span id="cart-applied-promos"></span>): </span>
-                    <span class="font-semibold" id="cart-total-discount">- R$ 0.00</span>
                 </div>
                 <div class="text-right text-2xl font-bold text-gray-900 mb-6">
                     Total: <span class="text-yellow-600" id="cart-final-total">R$ 0.00</span>
@@ -143,22 +138,41 @@
         </div>
     </div>
 
-    <div id="checkout-confirm-modal-overlay" class="modal-overlay hidden">
+    <!-- Modal de Opção de Entrega/Retirada -->
+    <div id="delivery-option-modal-overlay" class="modal-overlay hidden">
         <div class="modal-content text-center max-w-md">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">Confirmar Compra</h2>
-            <p class="text-gray-700 mb-6">Ao confirmar, você será redirecionado para o WhatsApp para finalizar o seu pedido com nossa equipe.</p>
-            <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
-                <button type="button" onclick="closeCheckoutConfirmModal()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2.5 px-4 rounded-full transition duration-300 w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-gray-400">Cancelar</button>
-                <button type="button" onclick="proceedToAddressCollection()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 px-4 rounded-full transition duration-300 w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-green-500">Confirmar e Ir para WhatsApp</button>
+            <button type="button" onclick="closeDeliveryOptionModal()" class="modal-close-button">&times;</button>
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Como você gostaria de receber seu pedido?</h2>
+            <div class="flex flex-col space-y-4">
+                <button type="button" onclick="selectDeliveryOption('entrega')" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 w-full focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                    Entrega
+                </button>
+                <button type="button" onclick="selectDeliveryOption('retirada')" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    Retirada na Loja
+                </button>
             </div>
         </div>
     </div>
 
+
+    <!-- Modal de Confirmação de WhatsApp (Usado para Retirada também) -->
+    <div id="checkout-confirm-modal-overlay" class="modal-overlay hidden">
+        <div class="modal-content text-center max-w-md">
+             <button type="button" onclick="closeCheckoutConfirmModal()" class="modal-close-button">&times;</button>
+            <h2 id="checkout-confirm-title" class="text-2xl font-bold text-gray-800 mb-4">Confirmar Pedido</h2>
+            <p id="checkout-confirm-message" class="text-gray-700 mb-6">Ao confirmar, você será redirecionado para o WhatsApp para finalizar seu pedido com nossa equipe.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+                <button type="button" onclick="closeCheckoutConfirmModal()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2.5 px-4 rounded-full transition duration-300 w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-gray-400">Cancelar</button>
+                <button type="button" id="confirm-whatsapp-button" onclick="proceedToWhatsApp()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 px-4 rounded-full transition duration-300 w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-green-500">Confirmar e Ir para WhatsApp</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Endereço de Entrega -->
     <div id="address-modal-overlay" class="modal-overlay hidden">
         <div class="modal-content text-center max-w-lg">
             <button type="button" onclick="closeAddressModal()" class="modal-close-button">&times;</button>
             <h2 class="text-2xl font-bold text-gray-800 mb-6">Endereço de Entrega</h2>
-            
             <form id="address-form" onsubmit="event.preventDefault(); handleFinalCheckoutWithAddress();" novalidate>
                 <div class="space-y-4 text-left">
                     <div>
@@ -197,7 +211,7 @@
         const PRODUCTS = [
             {
                 id: 'absolut',
-                name: 'Vodka Absolut',
+                name: 'Vodka Absolut 1L',
                 price: 90.00,
                 description: "Absolut é uma marca de vodka sueca, produzida em Åhus, Suécia. Conhecida por sua garrafa icônica e por sua forte ligação com a arte e a cultura, a Absolut oferece uma linha premium de vodkas puras e saborizadas, todas feitas com ingredientes naturais e sem adição de açúcar. É sinônimo de criatividade e qualidade.",
                 shortDescription: "Vodka sueca premium, destilação contínua, ícone cultural...",
@@ -206,8 +220,8 @@
             },
             {
                 id: 'smirnoff',
-                name: 'Vodka Smirnoff',
-                price: 50.00,
+                name: 'Vodka Smirnoff 1.75L', 
+                price: 50.00, // Preço atualizado
                 description: "Smirnoff é uma marca de vodka russa, fundada em 1864 por Pyotr Arsenievich Smirnov. É a vodka mais vendida no mundo e é conhecida por sua pureza e versatilidade em coquetéis. A marca oferece uma vasta gama de sabores e edições especiais, tornando-a uma favorita para diversas ocasiões.",
                 shortDescription: "Vodka russa mais vendida, pureza e versatilidade em cocktails...",
                 image: "https://www.elpalaciodehierro.com/on/demandware.static/-/Sites-palacio-master-catalog/default/dw6c36325a/images/12654333/large/12654333_x1.jpg",
@@ -215,78 +229,86 @@
             },
             {
                 id: 'blackWhite',
-                name: 'Whisky Black White',
-                price: 60.00,
+                name: 'Whisky Black White 1L',
+                price: 65.00, // Preço atualizado
                 description: "Black White é um whisky escocês blended, conhecido por seu sabor suave e acessível. É uma escolha popular para quem busca um whisky de qualidade para o dia a dia ou para misturas.",
                 shortDescription: "Whisky escocês suave e acessível, ideal para o dia a dia...",
                 image: "https://cdn11.bigcommerce.com/s-q90i85/images/stencil/1280w/products/390/1139/blackandwhite__39875.1629546098.png?c=2",
                 history: "O Whisky Black White foi criado em 1884 por James Buchanan. Originalmente conhecido como 'Buchanan's Blend', o nome 'Black & White' foi adotado devido à popularidade do seu rótulo distintivo, com um cão Terrier escocês preto e um West Highland White Terrier branco. Tornou-se um dos whiskies mais vendidos no mundo, especialmente conhecido pela sua leveza e suavidade, o que o torna ideal para ser apreciado puro ou em cocktails."
             },
             {
-                id: 'ginTanqueray',
-                name: 'Gin Tanqueray London Dry',
-                price: 150.00,
-                description: "Tanqueray é um gin inglês premium, destilado quatro vezes com uma mistura equilibrada de botânicos, incluindo zimbro, coentro, angélica e alcaçuz. Conhecido por seu sabor nítido e seco, é a base perfeita para coquetéis clássicos como o Gin Tônica, oferecendo uma experiência sofisticada e refrescante.",
-                shortDescription: "Gin inglês premium, destilado quatro vezes, sabor nítido e seco...",
-                image: "https://www.continente.pt/on/demandware.static/-/Sites-col-master-catalog/default/dwbe2e0a97/images/col/531/5318889-frente.jpg",
-                history: "Criado por Charles Tanqueray em 1830 em Londres, o Gin Tanqueray é conhecido pela sua receita que, segundo consta, apenas quatro pessoas no mundo conhecem. A sua destilação quádrupla e a seleção de botânicos de alta qualidade, como zimbro da Toscana, coentro, raiz de angélica e alcaçuz, resultam num gin com um perfil de sabor distintamente seco e cítrico. A icónica garrafa verde, inspirada num hidrante de rua inglês, é também uma marca registada."
-            },
-        ];
-
-        const PROMOTIONS = [
-            {
-                id: 'promoAbsolut',
-                name: 'Combo Absolut Imperdível!',
-                itemsRequired: [{ productId: 'absolut', quantity: 2 }],
-                promotionalPriceForSet: 170.00, // 2 * R$85
-                description: '2x Vodka Absolut por R$ 170,00 + 1L Energético Mormaii',
+                id: 'slovaMix',
+                name: 'Slova Mix 300ml',
+                price: 5.00,
+                description: "Slova Mix é uma bebida refrescante e saborosa, perfeita para diversas ocasiões. Ideal para quem busca uma opção prática e gostosa.",
+                shortDescription: "Bebida mista refrescante e saborosa...",
+                image: "https://i.imgur.com/PAjvEo2.png", 
+                history: ""
             },
             {
-                id: 'promoSmirnoff',
-                name: 'Esquenta Smirnoff!',
-                itemsRequired: [{ productId: 'smirnoff', quantity: 2 }],
-                promotionalPriceForSet: 90.00, // 2 * R$45
-                description: '2x Vodka Smirnoff por R$ 90,00 + 1L Energético Mormaii',
+                id: 'redbull',
+                name: 'Energético Red Bull 355ml', 
+                price: 10.00, // Preço atualizado
+                description: "Red Bull Energy Drink é apreciado em todo o mundo por atletas de elite, estudantes e em profissões exigentes, bem como durante longas viagens. Vitaliza corpo e mente.",
+                shortDescription: "Energético funcional que vitaliza corpo e mente...",
+                image: "https://newassets.apollo247.com/pub/media/catalog/product/r/e/red0178.jpg", 
+                history: ""
             },
             {
-                id: 'promoBlackWhite',
-                name: 'Dose Dupla Black White!',
-                itemsRequired: [{ productId: 'blackWhite', quantity: 2 }],
-                promotionalPriceForSet: 110.00, // 2 * R$55
-                description: '2x Whisky Black White por R$ 110,00 + 1L Energético Mormaii',
+                id: 'cabareIce',
+                name: 'Cabaré Ice 269ml',
+                price: 7.00,
+                description: "Cabaré Ice é uma bebida ice saborosa e pronta para beber, ideal para festas e momentos de descontração. Uma combinação equilibrada e refrescante.",
+                shortDescription: "Bebida ice saborosa e pronta para beber...",
+                image: "https://i.imgur.com/GLI8QdI.png", 
+                history: ""
             },
             {
-                id: 'promoGinTanqueray',
-                name: 'Gin Tanqueray em Dobro!',
-                itemsRequired: [{ productId: 'ginTanqueray', quantity: 2 }],
-                promotionalPriceForSet: 290.00, // 2 * R$145
-                description: '2x Gin Tanqueray por R$ 290,00 + 1L Energético Mormaii',
+                id: 'skolBeats',
+                name: 'Skol Beats Senses 269ml',
+                price: 6.00,
+                description: "Skol Beats Senses é uma bebida alcoólica mista com sabor cítrico e levemente adocicado, perfeita para curtir a noite e momentos de celebração.",
+                shortDescription: "Bebida alcoólica mista, cítrica e adocicada...",
+                image: "https://ocontadordecervejas.com.br/wp-content/uploads/thumbnails/skol-beats-a-nova-sensacao-da-balada.jpg",
+                history: ""
+            },
+            {
+                id: 'ballantines',
+                name: 'Whisky Ballantine\'s Finest 750ml', 
+                price: 50.00,
+                description: "Ballantine's Finest é um whisky escocês blended, suave e elegante, com notas de baunilha e chocolate. Perfeito para ser apreciado puro ou em cocktails.",
+                shortDescription: "Whisky escocês blended, suave e elegante...",
+                image: "https://a-static.mlcdn.com.br/800x560/whisky-ballantine-s-finest-j-demsky-750ml-ballantines/foximportadoracombr/2447/f9db16e316450e44e707370ed5095cc0.jpeg",
+                history: ""
             }
         ];
 
         let cart = [];
         let currentPage = 'home';
+        let deliveryMethod = null; 
 
         // --- Funções de Navegação e UI ---
         function navigateToPage(pageId) {
             currentPage = pageId;
             renderPage();
-            closeMenu();
-            closeCartModal();
-            closeCheckoutConfirmModal();
-            closeAddressModal();
+            closeAllModals();
         }
 
         function toggleMenu() {
             const menu = document.getElementById('main-menu');
             menu.classList.toggle('hidden');
-            closeCartModal();
-            closeCheckoutConfirmModal();
-            closeAddressModal();
         }
 
         function closeMenu() {
             document.getElementById('main-menu').classList.add('hidden');
+        }
+        
+        function closeAllModals() {
+            closeMenu();
+            closeCartModal();
+            closeDeliveryOptionModal();
+            closeCheckoutConfirmModal();
+            closeAddressModal();
         }
 
         function toggleCartModal() {
@@ -295,17 +317,38 @@
             if (!modal.classList.contains('hidden')) {
                 renderCart();
             }
-            closeMenu();
-            closeCheckoutConfirmModal();
-            closeAddressModal();
         }
 
         function closeCartModal() {
             document.getElementById('cart-modal-overlay').classList.add('hidden');
         }
 
+        function openDeliveryOptionModal() {
+            document.getElementById('delivery-option-modal-overlay').classList.remove('hidden');
+        }
+
+        function closeDeliveryOptionModal() {
+            document.getElementById('delivery-option-modal-overlay').classList.add('hidden');
+        }
+        
+        function openCheckoutConfirmModal() {
+            document.getElementById('checkout-confirm-modal-overlay').classList.remove('hidden');
+        }
+
         function closeCheckoutConfirmModal() {
             document.getElementById('checkout-confirm-modal-overlay').classList.add('hidden');
+        }
+        
+        function openAddressModal() {
+            document.getElementById('address-modal-overlay').classList.remove('hidden');
+            document.getElementById('address-form').reset();
+            ['cep-error', 'street-error', 'number-error', 'neighborhood-error', 'general-error'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.classList.add('hidden');
+                    el.textContent = ''; 
+                }
+            });
         }
 
         function closeAddressModal() {
@@ -315,53 +358,11 @@
         // --- Lógica do Carrinho ---
         function calculateCartTotals(currentCart) {
             let subtotal = 0;
-            let totalDiscount = 0;
-            let appliedPromos = [];
-
-            let tempCartForPromoCalc = JSON.parse(JSON.stringify(currentCart));
-
-            tempCartForPromoCalc.forEach(item => {
+            currentCart.forEach(item => {
                 const productInfo = PRODUCTS.find(p => p.id === item.id);
-                if (productInfo) {
-                    subtotal += productInfo.price * item.quantity;
-                }
+                subtotal += (productInfo ? productInfo.price : item.price) * item.quantity;
             });
-
-            PROMOTIONS.forEach(promo => {
-                let setsAppliedThisPromo = 0;
-                while (true) {
-                    const canApplyThisSet = promo.itemsRequired.every(reqItem => {
-                        const cartItem = tempCartForPromoCalc.find(ci => ci.id === reqItem.productId);
-                        return cartItem && cartItem.quantity >= reqItem.quantity;
-                    });
-
-                    if (canApplyThisSet) {
-                        let originalPriceForSet = 0;
-                        promo.itemsRequired.forEach(reqItem => {
-                            const productDetails = PRODUCTS.find(p => p.id === reqItem.productId);
-                            if (productDetails) {
-                                originalPriceForSet += productDetails.price * reqItem.quantity;
-                            }
-                            const cartItemIndex = tempCartForPromoCalc.findIndex(ci => ci.id === reqItem.productId);
-                            if (cartItemIndex > -1) {
-                                tempCartForPromoCalc[cartItemIndex].quantity -= reqItem.quantity;
-                            }
-                        });
-                        totalDiscount += (originalPriceForSet - promo.promotionalPriceForSet);
-                        setsAppliedThisPromo++;
-                    } else {
-                        break;
-                    }
-                }
-                if (setsAppliedThisPromo > 0) {
-                    appliedPromos.push(`${promo.name} (x${setsAppliedThisPromo})`);
-                }
-            });
-
-            const finalTotal = subtotal - totalDiscount;
-            const appliedPromotionsText = appliedPromos.join(', ');
-
-            return { subtotal, totalDiscount, finalTotal, appliedPromotionsText };
+            return { subtotal, totalDiscount: 0, finalTotal: subtotal, appliedPromotionsText: '' };
         }
 
         function updateCartCountDisplay() {
@@ -380,7 +381,6 @@
                 cart.push({ ...product, quantity: 1 });
             }
             updateCartCountDisplay();
-            console.log('Carrinho:', cart);
         }
 
         function updateCartQuantity(productId, quantity) {
@@ -433,7 +433,7 @@
                         <button type="button" onclick="updateCartQuantity('${item.id}', ${item.quantity + 1})" class="bg-gray-200 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-300 transition-colors" aria-label="Aumentar quantidade de ${item.name}">+</button>
                         <button type="button" onclick="removeFromCart('${item.id}')" class="ml-4 text-red-500 hover:text-red-700 transition-colors" aria-label="Remover ${item.name} do carrinho">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2">
-                                <polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line>
+                                <polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line>
                             </svg>
                         </button>
                     </div>
@@ -442,36 +442,63 @@
 
             const totals = calculateCartTotals(cart);
             document.getElementById('cart-subtotal').textContent = `R$ ${totals.subtotal.toFixed(2)}`;
-            document.getElementById('cart-total-discount').textContent = `- R$ ${totals.totalDiscount.toFixed(2)}`;
-            document.getElementById('cart-applied-promos').textContent = totals.appliedPromotionsText;
             document.getElementById('cart-final-total').textContent = `R$ ${totals.finalTotal.toFixed(2)}`;
-
-            if (totals.totalDiscount > 0) {
-                document.getElementById('cart-discount-row').classList.remove('hidden');
-            } else {
-                document.getElementById('cart-discount-row').classList.add('hidden');
-            }
             updateCartCountDisplay();
         }
 
+        // --- Lógica de Checkout ---
         function handleCheckout() {
+            if (cart.length === 0) {
+                console.log("Carrinho vazio. Não pode finalizar a compra.");
+                return;
+            }
             closeCartModal();
-            document.getElementById('checkout-confirm-modal-overlay').classList.remove('hidden');
+            openDeliveryOptionModal();
         }
 
-        function proceedToAddressCollection() {
-            closeCheckoutConfirmModal();
-            document.getElementById('address-modal-overlay').classList.remove('hidden');
-            // Limpa os campos e erros do formulário ao abrir
-            document.getElementById('address-form').reset();
-            document.getElementById('cep-error').classList.add('hidden');
-            document.getElementById('street-error').classList.add('hidden');
-            document.getElementById('number-error').classList.add('hidden');
-            document.getElementById('neighborhood-error').classList.add('hidden');
-            document.getElementById('general-error').classList.add('hidden');
+        function selectDeliveryOption(method) {
+            deliveryMethod = method;
+            closeDeliveryOptionModal();
+            if (method === 'entrega') {
+                openAddressModal();
+            } else if (method === 'retirada') {
+                document.getElementById('checkout-confirm-title').textContent = "Confirmar Retirada";
+                document.getElementById('checkout-confirm-message').textContent = "Seu pedido será preparado para retirada. Ao confirmar, você será redirecionado para o WhatsApp.";
+                openCheckoutConfirmModal();
+            }
+        }
+        
+        function proceedToWhatsApp() {
+            const phoneNumber = '5584988454446';
+            const totals = calculateCartTotals(cart);
+            let message = "Olá! Gostaria de finalizar a minha compra na Adega Conceito.\n\n";
+            message += "Itens:\n";
+            cart.forEach(item => {
+                message += `- ${item.name} (x${item.quantity}) - R$ ${(item.price * item.quantity).toFixed(2)}\n`;
+            });
+            message += `\nSubtotal: R$ ${totals.subtotal.toFixed(2)}\n`;
+            message += `Total: R$ ${totals.finalTotal.toFixed(2)}\n`;
+
+            if (deliveryMethod === 'retirada') {
+                message += "\nOpção: Retirada na loja.\n";
+            } else {
+                message += "\nOpção: Entrega (detalhes do endereço serão confirmados).\n";
+                console.warn("proceedToWhatsApp chamada para entrega, mas o endereço deve ser tratado por handleFinalCheckoutWithAddress.");
+            }
+             message += "\nAguardamos o seu contato para finalizar o pedido!";
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+
+            cart = []; 
+            closeAllModals();
+            updateCartCountDisplay(); 
+            navigateToPage('home'); 
         }
 
-        function handleFinalCheckoutWithAddress() {
+
+        function handleFinalCheckoutWithAddress() { 
             const cep = document.getElementById('cep').value;
             const street = document.getElementById('street').value;
             const number = document.getElementById('number').value;
@@ -480,33 +507,42 @@
             let hasError = false;
             const cepPattern = /^\d{5}-?\d{3}$/;
 
-            // Reset errors
-            document.getElementById('cep-error').classList.add('hidden');
-            document.getElementById('street-error').classList.add('hidden');
-            document.getElementById('number-error').classList.add('hidden');
-            document.getElementById('neighborhood-error').classList.add('hidden');
-            document.getElementById('general-error').classList.add('hidden');
+            ['cep-error', 'street-error', 'number-error', 'neighborhood-error', 'general-error'].forEach(id => {
+                const el = document.getElementById(id);
+                el.classList.add('hidden');
+                if (id === 'general-error') el.textContent = '';
+            });
+
 
             if (!cep.trim() || !cepPattern.test(cep)) {
-                document.getElementById('cep-error').classList.remove('hidden');
+                const el = document.getElementById('cep-error');
+                el.classList.remove('hidden');
+                el.textContent = 'CEP inválido (ex: 00000-000).';
                 hasError = true;
             }
             if (!street.trim()) {
-                document.getElementById('street-error').classList.remove('hidden');
+                const el = document.getElementById('street-error');
+                el.classList.remove('hidden');
+                el.textContent = 'Rua é obrigatória.';
                 hasError = true;
             }
             if (!number.trim()) {
-                document.getElementById('number-error').classList.remove('hidden');
+                const el = document.getElementById('number-error');
+                el.classList.remove('hidden');
+                el.textContent = 'Número é obrigatório.';
                 hasError = true;
             }
             if (!neighborhood.trim()) {
-                document.getElementById('neighborhood-error').classList.remove('hidden');
+                const el = document.getElementById('neighborhood-error');
+                el.classList.remove('hidden');
+                el.textContent = 'Bairro é obrigatório.';
                 hasError = true;
             }
 
             if (hasError) {
-                document.getElementById('general-error').textContent = "Por favor, preencha todos os campos obrigatórios corretamente.";
-                document.getElementById('general-error').classList.remove('hidden');
+                const el = document.getElementById('general-error');
+                el.textContent = "Por favor, preencha todos os campos obrigatórios corretamente.";
+                el.classList.remove('hidden');
                 return;
             }
 
@@ -519,11 +555,8 @@
                 message += `- ${item.name} (x${item.quantity}) - R$ ${(item.price * item.quantity).toFixed(2)}\n`;
             });
             message += `\nSubtotal: R$ ${totals.subtotal.toFixed(2)}\n`;
-            if (totals.totalDiscount > 0) {
-                message += `Descontos (${totals.appliedPromotionsText}): - R$ ${totals.totalDiscount.toFixed(2)}\n`;
-            }
             message += `Total: R$ ${totals.finalTotal.toFixed(2)}\n`;
-
+            message += "\nOpção: Entrega.\n";
             message += "\nEndereço para entrega:\n";
             message += `CEP: ${cep}\n`;
             message += `Rua: ${street}\n`;
@@ -533,21 +566,21 @@
 
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
             window.open(whatsappUrl, '_blank');
 
-            cart = []; // Limpa o carrinho
-            closeAddressModal();
-            updateCartCountDisplay(); // Atualiza o contador do carrinho no header
-            navigateToPage('home'); // Volta para a página inicial
+            cart = []; 
+            closeAllModals();
+            updateCartCountDisplay(); 
+            navigateToPage('home'); 
         }
+
 
         // --- Funções de Renderização de Páginas ---
         function renderHomePage() {
             const mainContent = document.getElementById('app-main-content');
-            const featuredProducts = PRODUCTS.filter(p => ['absolut', 'smirnoff', 'blackWhite', 'ginTanqueray'].includes(p.id))
-                                            .sort((a, b) => ['absolut', 'smirnoff', 'blackWhite', 'ginTanqueray'].indexOf(a.id) - ['absolut', 'smirnoff', 'blackWhite', 'ginTanqueray'].indexOf(b.id))
-                                            .slice(0, 4);
+            const featuredProductIds = ['absolut', 'smirnoff', 'blackWhite', 'ballantines'];
+            const featuredProducts = PRODUCTS.filter(p => featuredProductIds.includes(p.id))
+                                            .sort((a, b) => featuredProductIds.indexOf(a.id) - featuredProductIds.indexOf(b.id));
 
             mainContent.innerHTML = `
                 <div class="container mx-auto px-4 py-8 text-center">
@@ -556,8 +589,8 @@
                             Bem-vindo à <span class="text-yellow-600">Adega Conceito</span>
                         </h2>
                         <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
-                            Explore a sofisticação e a qualidade dos melhores destilados do mercado.
-                            Descubra a história, os sabores e as possibilidades infinitas.
+                            Explore a sofisticação e a qualidade dos melhores destilados do mercado. 
+                            Brinde aos momentos especiais com a seleção premium da Adega Conceito.
                         </p>
 
                         <h3 class="text-3xl font-bold text-gray-700 mb-8 mt-12">Em Destaque</h3>
@@ -572,7 +605,6 @@
                                             ${product.name}
                                         </h3>
                                         <p class="text-gray-600 text-sm mb-4 line-clamp-2 flex-grow">${product.shortDescription}</p>
-                                        <!-- Preço não exibido na Home Page conforme a versão React anterior -->
                                         <button type="button" onclick="addToCart('${product.id}')" class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 mt-auto">
                                             Adicionar ao Carrinho
                                         </button>
@@ -621,8 +653,7 @@
                 `;
                 return;
             }
-
-            const isImageLeft = ['absolut', 'ginTanqueray', 'blackWhite'].includes(productId);
+            const isImageLeft = ['absolut', 'blackWhite'].includes(productId); 
             document.getElementById('app-main-content').innerHTML = `
                 <div class="container mx-auto px-4 py-8">
                     <div class="bg-white p-6 md:p-8 rounded-lg shadow-xl flex flex-col md:flex-row items-start md:items-center gap-8">
@@ -637,7 +668,6 @@
                                 <button type="button" onclick="addToCart('${product.id}')" class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 flex-1">
                                     Adicionar ao Carrinho
                                 </button>
-                                <!-- Botão de ideias de cocktails removido para simplificação em HTML puro -->
                             </div>
                         </div>
                     </div>
@@ -658,7 +688,7 @@
                     <div class="bg-white p-8 rounded-lg shadow-xl max-w-4xl mx-auto">
                         <h2 class="text-4xl font-bold text-gray-800 mb-6" style="font-family: 'Playfair Display', serif;">Sobre a Adega Conceito</h2>
                         <p class="text-lg text-gray-700 leading-relaxed mb-4" style="font-family: 'Lora', serif;">A Adega Conceito nasceu da paixão por destilados de alta qualidade e do desejo de proporcionar uma experiência única aos apreciadores. O nosso objetivo é curar uma seleção exclusiva das melhores bebidas do mercado, oferecendo não apenas produtos, mas também conhecimento e inspiração para cada gole.</p>
-                        <p class="text-lg text-gray-700 leading-relaxed mb-4" style="font-family: 'Lora', serif;">Acreditamos que cada garrafa conta uma história, e estamos aqui para o ajudar a descobrir a sua. Trabalhamos com marcas renomadas como Absolut, Smirnoff e Tanqueray, garantindo a excelência em cada produto que oferecemos.</p>
+                        <p class="text-lg text-gray-700 leading-relaxed mb-4" style="font-family: 'Lora', serif;">Acreditamos que cada garrafa conta uma história, e estamos aqui para o ajudar a descobrir a sua. Trabalhamos com marcas renomadas e produtos de qualidade, garantindo a excelência em cada item que oferecemos.</p> 
                     </div>
                 </div>
             `;
@@ -666,31 +696,25 @@
 
         function renderPage() {
             switch (currentPage) {
-                case 'home':
-                    renderHomePage();
-                    break;
-                case 'shop':
-                    renderShopPage();
-                    break;
-                case 'absolut':
-                case 'smirnoff':
-                case 'blackWhite':
-                case 'ginTanqueray':
-                    renderProductDetailPage(currentPage);
-                    break;
-                case 'about':
-                    renderAboutPage();
-                    break;
+                case 'home': renderHomePage(); break;
+                case 'shop': renderShopPage(); break;
+                case 'about': renderAboutPage(); break;
                 default:
-                    renderHomePage();
+                    if (PRODUCTS.find(p => p.id === currentPage)) {
+                        renderProductDetailPage(currentPage);
+                    } else {
+                        renderHomePage(); 
+                    }
+                    break;
             }
         }
+
 
         // --- Inicialização ---
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('current-year').textContent = new Date().getFullYear();
-            renderPage(); // Renderiza a página inicial ao carregar
-            updateCartCountDisplay(); // Atualiza o contador do carrinho
+            renderPage(); 
+            updateCartCountDisplay(); 
         });
     </script>
 </body>
