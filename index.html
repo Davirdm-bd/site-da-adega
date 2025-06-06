@@ -215,16 +215,16 @@
                 name: 'Vodka Absolut 1L',
                 price: 90.00,
                 description: "Absolut é uma marca de vodka sueca, produzida em Åhus, Suécia. Conhecida por sua garrafa icônica e por sua forte ligação com a arte e a cultura, a Absolut oferece uma linha premium de vodkas puras e saborizadas, todas feitas com ingredientes naturais e sem adição de açúcar. É sinônimo de criatividade e qualidade.",
-                shortDescription: "Vodka sueca premium, destilação contínua, ícone cultural...",
+                shortDescription: "Vodka sueca premium, destilação contínua...",
                 image: "https://www.thetipplecellar.com/image_resize/w555/h555/products/372/71d2ekq9kvl.acsl1500-copy.jpg",
                 history: "Lançada em 1879 por Lars Olsson Smith, a Absolut revolucionou a produção de vodka com o seu método de destilação contínua, removendo impurezas e mantendo o caráter dos ingredientes. A sua icónica garrafa, inspirada num frasco de remédio sueco do século XVIII encontrado numa loja de antiguidades em Estocolmo, foi introduzida em Nova Iorque em 1979. Esta estratégia de marketing inovadora, juntamente com colaborações artísticas com nomes como Andy Warhol, ajudou a Absolut a tornar-se uma marca global e um ícone cultural."
             },
             {
                 id: 'smirnoff',
                 name: 'Vodka Smirnoff 1.75L',
-                price: 50.00,
+                price: 40.00, 
                 description: "Smirnoff é uma marca de vodka russa, fundada em 1864 por Pyotr Arsenievich Smirnov. É a vodka mais vendida no mundo e é conhecida por sua pureza e versatilidade em coquetéis. A marca oferece uma vasta gama de sabores e edições especiais, tornando-a uma favorita para diversas ocasiões.",
-                shortDescription: "Vodka russa mais vendida, pureza e versatilidade em cocktails...",
+                shortDescription: "Vodka russa mais vendida, pureza e versatilidade...",
                 image: "https://www.elpalaciodehierro.com/on/demandware.static/-/Sites-palacio-master-catalog/default/dw6c36325a/images/12654333/large/12654333_x1.jpg",
                 history: "A história da Smirnoff começa em Moscovo, em 1864, quando Pyotr Arsenievich Smirnov fundou a sua destilaria. Utilizando um processo de filtração por carvão pioneiro, Smirnov criou uma uma vodka de pureza excecional que rapidamente ganhou popularidade, chegando a ser o fornecedor oficial da Corte Imperial Russa. Após a Revolução Russa, a família Smirnov fugiu do país, restabelecendo a marca em França e, posteriormente, nos Estados Unidos, onde se tornou a vodka mais vendida do mundo, popularizando cocktails como o Moscow Mule."
             },
@@ -233,7 +233,7 @@
                 name: 'Whisky Black White 1L',
                 price: 65.00,
                 description: "Black White é um whisky escocês blended, conhecido por seu sabor suave e acessível. É uma escolha popular para quem busca um whisky de qualidade para o dia a dia ou para misturas.",
-                shortDescription: "Whisky escocês suave e acessível, ideal para o dia a dia...",
+                shortDescription: "Whisky escocês suave e acessível...",
                 image: "https://cdn11.bigcommerce.com/s-q90i85/images/stencil/1280w/products/390/1139/blackandwhite__39875.1629546098.png?c=2",
                 history: "O Whisky Black White foi criado em 1884 por James Buchanan. Originalmente conhecido como 'Buchanan's Blend', o nome 'Black & White' foi adotado devido à popularidade do seu rótulo distintivo, com um cão Terrier escocês preto e um West Highland White Terrier branco. Tornou-se um dos whiskies mais vendidos no mundo, especialmente conhecido pela sua leveza e suavidade, o que o torna ideal para ser apreciado puro ou em cocktails."
             },
@@ -256,9 +256,9 @@
                 history: ""
             },
             {
-                id: 'energeticoMormaii', // Produto existente, preço será atualizado
+                id: 'energeticoMormaii',
                 name: 'Energetico Mormaii 1L',
-                price: 10.00, // Preço atualizado para 10.00
+                price: 10.00,
                 description: "Energético Mormaii para dar um up no seu dia com muito sabor e energia. Ideal para atividades físicas ou para quando você precisa de um estímulo extra.",
                 shortDescription: "Energia e sabor para o seu dia a dia.",
                 image: "https://ibassets.com.br/ib.item.image.large/l-99ab0795ec7548cf8ae213de21d9fb04.jpeg",
@@ -290,6 +290,24 @@
                 shortDescription: "Whisky escocês blended, suave e elegante...",
                 image: "https://a-static.mlcdn.com.br/800x560/whisky-ballantine-s-finest-j-demsky-750ml-ballantines/foximportadoracombr/2447/f9db16e316450e44e707370ed5095cc0.jpeg",
                 history: ""
+            },
+            {
+                id: 'spatenLongNeck',
+                name: 'Cerveja Spaten Long Neck 350ml',
+                price: 4.00,
+                description: "Cerveja Spaten Munich Helles, puro malte de tradição alemã desde 1397. Leve, refrescante e com um sabor equilibrado.",
+                shortDescription: "Cerveja alemã puro malte, leve e refrescante.",
+                image: "https://trend-files-public-prod.s3.us-east-1.amazonaws.com/thumbs/500-19272a0e-d80c-4463-bd4d-3a42d38d267f.png",
+                history: "Spaten é uma das cervejarias mais antigas de Munique, Alemanha, com uma rica história que remonta a 1397. É conhecida por sua contribuição ao estilo Munich Helles."
+            },
+            {
+                id: 'heinekenLongNeck',
+                name: 'Heineken Long Neck 350ml',
+                price: 4.50,
+                description: "Heineken, a cerveja premium lager puro malte, refrescante e de cor amarelo-dourada, produzida com ingredientes 100% naturais.",
+                shortDescription: "Cerveja premium lager, puro malte e refrescante.",
+                image: "https://i.imgur.com/W3urzyr.jpeg", // URL da imagem atualizada
+                history: "Fundada em 1864 por Gerard Adriaan Heineken em Amsterdã, a Heineken cresceu e se tornou uma das marcas de cerveja mais reconhecidas e vendidas internacionalmente."
             }
         ];
 
@@ -408,8 +426,6 @@
                 cart.push({ ...product, quantity: 1 }); // Adiciona novo item ao carrinho
             }
             updateCartCountDisplay(); // Atualiza a contagem no ícone do carrinho
-            // Opcional: Abrir o modal do carrinho ou mostrar uma notificação
-            // toggleCartModal(); 
         }
 
         // Atualiza a quantidade de um item no carrinho
@@ -485,7 +501,6 @@
         function handleCheckout() {
             if (cart.length === 0) { // Não prosseguir se o carrinho estiver vazio
                 console.log("Carrinho vazio. Não pode finalizar a compra.");
-                // Pode-se adicionar uma mensagem visual para o usuário aqui
                 return;
             }
             closeCartModal(); // Fecha o modal do carrinho
@@ -506,7 +521,7 @@
             }
         }
         
-        // Redireciona para o WhatsApp com a mensagem do pedido (para retirada)
+        // Redireciona para o WhatsApp com a mensagem do pedido (para retirada ou entrega)
         function proceedToWhatsApp() {
             const phoneNumber = '5584988454446'; // Número de telefone para contato via WhatsApp
             const totals = calculateCartTotals(cart);
@@ -521,9 +536,17 @@
             if (deliveryMethod === 'retirada') {
                 message += "\nOpção: Retirada na loja.\n";
             } else if (deliveryMethod === 'entrega') {
-                 // Este caso deve ser tratado por handleFinalCheckoutWithAddress, mas incluímos uma mensagem genérica se chamado aqui
+                const cep = document.getElementById('cep') ? document.getElementById('cep').value : "N/A";
+                const street = document.getElementById('street') ? document.getElementById('street').value : "N/A";
+                const number = document.getElementById('number') ? document.getElementById('number').value : "N/A";
+                const neighborhood = document.getElementById('neighborhood') ? document.getElementById('neighborhood').value : "N/A";
+                
                 message += "\nOpção: Entrega.\n";
-                // Detalhes do endereço serão adicionados pela função handleFinalCheckoutWithAddress
+                message += "\nEndereço para entrega:\n";
+                message += `CEP: ${cep}\n`;
+                message += `Rua: ${street}\n`;
+                message += `Número: ${number}\n`;
+                message += `Bairro: ${neighborhood}\n`;
             }
              message += "\nAguardamos o seu contato para finalizar o pedido!";
 
@@ -587,34 +610,9 @@
                 el.classList.remove('hidden');
                 return;
             }
-
-            // Se não houver erros, monta a mensagem para o WhatsApp
-            const phoneNumber = '5584988454446'; // Número de telefone para contato
-            const totals = calculateCartTotals(cart);
-
-            let message = "Olá! Gostaria de finalizar a minha compra na Adega Conceito.\n\n";
-            message += "Itens:\n";
-            cart.forEach(item => {
-                message += `- ${item.name} (x${item.quantity}) - R$ ${(item.price * item.quantity).toFixed(2)}\n`;
-            });
-            message += `\nSubtotal: R$ ${totals.subtotal.toFixed(2)}\n`;
-            message += `Total: R$ ${totals.finalTotal.toFixed(2)}\n`;
-            message += "\nOpção: Entrega.\n";
-            message += "\nEndereço para entrega:\n";
-            message += `CEP: ${cep}\n`;
-            message += `Rua: ${street}\n`;
-            message += `Número: ${number}\n`;
-            message += `Bairro: ${neighborhood}\n`;
-            message += "\nAguardamos o seu contato para finalizar o pedido!";
-
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-            window.open(whatsappUrl, '_blank'); // Abre o WhatsApp
-
-            cart = []; // Limpa o carrinho
-            closeAllModals(); // Fecha todos os modais
-            updateCartCountDisplay(); // Atualiza a contagem do carrinho
-            navigateToPage('home'); // Volta para a página inicial
+            
+            deliveryMethod = 'entrega'; 
+            proceedToWhatsApp(); 
         }
 
 
@@ -622,7 +620,6 @@
         // Renderiza a página inicial
         function renderHomePage() {
             const mainContent = document.getElementById('app-main-content');
-            // Alterado para mostrar TODOS os produtos na home page
             const productsToShow = PRODUCTS; 
 
             mainContent.innerHTML = `
@@ -632,7 +629,7 @@
                             Bem-vindo à <span class="text-yellow-600">Adega Conceito</span>
                         </h2>
                         <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
-                            Explore a sofisticação e a qualidade dos melhores destilados do mercado. 
+                            Explore a sofisticação e a qualidade dos melhores destilados e cervejas do mercado. 
                             Brinde aos momentos especiais com a seleção premium da Adega Conceito.
                         </p>
 
@@ -691,7 +688,7 @@
         // Renderiza a página de detalhes de um produto específico
         function renderProductDetailPage(productId) {
             const product = PRODUCTS.find(p => p.id === productId);
-            if (!product) { // Se o produto não for encontrado
+            if (!product) { 
                 document.getElementById('app-main-content').innerHTML = `
                     <div class="container mx-auto px-4 py-8 text-center">
                         <p class="text-gray-700 text-lg">Produto não encontrado ou informações indisponíveis.</p>
@@ -700,8 +697,7 @@
                 `;
                 return;
             }
-            // Determina se a imagem fica à esquerda ou à direita para variar o layout
-            const isImageLeft = ['absolut', 'blackWhite', 'energeticoMormaii'].includes(productId); 
+            const isImageLeft = ['absolut', 'blackWhite', 'energeticoMormaii', 'heinekenLongNeck'].includes(productId); 
             document.getElementById('app-main-content').innerHTML = `
                 <div class="container mx-auto px-4 py-8">
                     <div class="bg-white p-6 md:p-8 rounded-lg shadow-xl flex flex-col md:flex-row items-start md:items-center gap-8">
@@ -753,24 +749,22 @@
                 case 'shop': renderShopPage(); break;
                 case 'about': renderAboutPage(); break;
                 default:
-                    // Se `currentPage` não for uma página padrão, tenta renderizar como página de produto
                     if (PRODUCTS.find(p => p.id === currentPage)) {
                         renderProductDetailPage(currentPage);
                     } else {
-                        renderHomePage(); // Página padrão se nenhuma outra corresponder
+                        renderHomePage(); 
                     }
                     break;
             }
-             window.scrollTo(0, 0); // Rola para o topo da página ao navegar
+             window.scrollTo(0, 0); 
         }
 
 
         // --- Inicialização ---
-        // Executa quando o DOM estiver totalmente carregado
         document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('current-year').textContent = new Date().getFullYear(); // Define o ano atual no rodapé
-            renderPage(); // Renderiza a página inicial (ou a página atual, se definida de outra forma)
-            updateCartCountDisplay(); // Atualiza a contagem inicial do carrinho (geralmente 0)
+            document.getElementById('current-year').textContent = new Date().getFullYear(); 
+            renderPage(); 
+            updateCartCountDisplay(); 
         });
     </script>
 </body>
